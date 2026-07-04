@@ -1,108 +1,121 @@
+// Blueprint Satellite - 2D Canvas, lightweight, no Three.js
 (function() {
     const canvas = document.getElementById('three-canvas');
     if (!canvas) return;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const ctx = canvas.getContext('2d');
+    let angle = 0;
+    let dashOffset = 0;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 1, 10);
-    camera.lookAt(0, 0, 0);
-
-    // إضاءة متطورة
-    const ambientLight = new THREE.AmbientLight(0x404066);
-    scene.add(ambientLight);
-    const dirLight1 = new THREE.DirectionalLight(0x0ECCED, 1.2);
-    dirLight1.position.set(1, 1, 2);
-    scene.add(dirLight1);
-    const dirLight2 = new THREE.DirectionalLight(0xd4af37, 0.8);
-    dirLight2.position.set(-1, -0.5, -1);
-    scene.add(dirLight2);
-
-    const group = new THREE.Group();
-    scene.add(group);
-
-    // --- بناء قمر صناعي احترافي ---
-    const matBody = new THREE.MeshStandardMaterial({ color: 0x0ECCED, roughness: 0.4, metalness: 0.7, emissive: new THREE.Color(0x001122) });
-    const matPanel = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.3, metalness: 0.8, emissive: new THREE.Color(0x221100) });
-    const matAntenna = new THREE.MeshStandardMaterial({ color: 0xcccccc, roughness: 0.2, metalness: 0.9 });
-
-    // الجسم الرئيسي (اسطوانة)
-    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 1.5, 16), matBody);
-    body.position.y = 0;
-    group.add(body);
-
-    // الألواح الشمسية (أجنحة)
-    const panelGeo = new THREE.BoxGeometry(0.2, 0.8, 1.5);
-    const panelLeft = new THREE.Mesh(panelGeo, matPanel);
-    panelLeft.position.set(-0.8, 0, 0);
-    group.add(panelLeft);
-    const panelRight = new THREE.Mesh(panelGeo, matPanel);
-    panelRight.position.set(0.8, 0, 0);
-    group.add(panelRight);
-
-    // هوائيات
-    const antennaBase = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.5, 8), matAntenna);
-    antennaBase.position.set(0, 1.1, 0);
-    group.add(antennaBase);
-    const dish = new THREE.Mesh(new THREE.SphereGeometry(0.25, 16, 8), matAntenna);
-    dish.position.set(0, 1.5, 0);
-    group.add(dish);
-
-    // إضافة حلقات للزينة
-    const ringGeo = new THREE.TorusGeometry(0.6, 0.05, 8, 32);
-    const ring = new THREE.Mesh(ringGeo, matAntenna);
-    ring.rotation.x = Math.PI / 2;
-    ring.position.y = 0.2;
-    group.add(ring);
-
-    // تأثير جسيمات حول القمر الصناعي (اختياري)
-    const particlesGeo = new THREE.BufferGeometry();
-    const particlesCount = 200;
-    const posArray = new Float32Array(particlesCount * 3);
-    for (let i = 0; i < particlesCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 5;
-        posArray[i+1] = (Math.random() - 0.5) * 5;
-        posArray[i+2] = (Math.random() - 0.5) * 5;
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        draw();
     }
-    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particlesMat = new THREE.PointsMaterial({ size: 0.02, color: 0x0ECCED, blending: THREE.AdditiveBlending });
-    const particles = new THREE.Points(particlesGeo, particlesMat);
-    scene.add(particles); // الجسيمات تدور بشكل مستقل
 
-    // حركة الماوس للتحكم بالكاميرا
-    let mouseX = 0, mouseY = 0;
-    window.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-        mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-    });
+    window.addEventListener('resize', resize);
 
-    // حلقة الرسوم المتحركة
+    // رسم القمر الصناعي بتصميم Blueprint متطور
+    function drawSatellite(scale) {
+        ctx.save();
+        // التمركز حول منتصف الشاشة
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.rotate(angle);
+
+        // ضبط استايل الخطوط (نمط مخططات الـ Blueprint)
+        ctx.strokeStyle = "rgba(0, 238, 205, 0.85)"; // لون سيان مضيء
+        ctx.lineWidth = 1.8;
+        ctx.fillStyle = "rgba(10, 25, 50, 0.5)";
+
+        // 1. الهيكل المركزي
+        ctx.beginPath();
+        ctx.rect(-30, -30, 60, 60);
+        ctx.fill();
+        ctx.stroke();
+        // إطار داخلي
+        ctx.beginPath();
+        ctx.rect(-20, -20, 40, 40);
+        ctx.stroke();
+
+        // 2. الألواح الشمسية
+        // الجناح الأيمن
+        ctx.beginPath();
+        ctx.moveTo(30, -5);
+        ctx.lineTo(50, -5);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.rect(50, -20, 60, 40);
+        ctx.fill();
+        ctx.stroke();
+        for (let i = 65; i < 110; i += 15) {
+            ctx.beginPath();
+            ctx.moveTo(i, -20);
+            ctx.lineTo(i, 20);
+            ctx.stroke();
+        }
+        // الجناح الأيسر
+        ctx.beginPath();
+        ctx.moveTo(-30, -5);
+        ctx.lineTo(-50, -5);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.rect(-110, -20, 60, 40);
+        ctx.fill();
+        ctx.stroke();
+        for (let i = -95; i > -50; i += 15) {
+            ctx.beginPath();
+            ctx.moveTo(i, -20);
+            ctx.lineTo(i, 20);
+            ctx.stroke();
+        }
+
+        // 3. هوائي المسح (طبق مخروطي)
+        ctx.beginPath();
+        ctx.moveTo(0, 30);
+        ctx.lineTo(0, 45);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(0, 50, 20, Math.PI, 0, false);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, 45);
+        ctx.lineTo(0, 58);
+        ctx.stroke();
+
+        // 4. خطوط مسح نبضية (تأثير المسح الجيوفيزيائي)
+        ctx.setLineDash([4, 4]);
+        ctx.lineDashOffset = -dashOffset; // تحريك الخطوط
+        ctx.strokeStyle = "rgba(0, 238, 205, 0.3)";
+        ctx.beginPath();
+        ctx.moveTo(-15, 55);
+        ctx.lineTo(-40, 150);
+        ctx.moveTo(15, 55);
+        ctx.lineTo(40, 150);
+        ctx.stroke();
+
+        // خط مسح أفقي للطبق
+        ctx.beginPath();
+        ctx.arc(0, 50, 25, Math.PI * 0.8, Math.PI * 1.2, false);
+        ctx.stroke();
+
+        // إعادة تعيين الخطوط الصلبة
+        ctx.setLineDash([]);
+        ctx.restore();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawSatellite(1);
+    }
+
+    // حلقة الأنيميشن: دوران بطيء + تحريك خطوط المسح
     function animate() {
+        angle += 0.002; // دوران بطيء جداً
+        dashOffset += 0.3; // تحريك الخطوط المتقطعة
+        draw();
         requestAnimationFrame(animate);
-
-        // دوران المجموعة الرئيسية ببطء
-        group.rotation.y += 0.002;
-        group.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
-
-        // الجسيمات تدور بشكل أسرع
-        particles.rotation.y += 0.0005;
-        particles.rotation.x += 0.0002;
-
-        // تحريك الكاميرا استجابة للماوس (تأثير parallax خفيف)
-        camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
-        camera.position.y += (-mouseY * 1.5 - camera.position.y) * 0.05;
-        camera.lookAt(0, 0, 0);
-
-        renderer.render(scene, camera);
     }
-    animate();
 
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+    resize();
+    animate();
 })();
