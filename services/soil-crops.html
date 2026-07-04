@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LATTIX Soil & Crop Suitability – Scientific land rating for dates, sorghum, sesame & more. 862 research papers indexed, F1 score 0.80.">
+    <title>Soil & Crop Suitability | LATTIX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">LATTIX <span>INTELLIGENCE SYSTEMS</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#services">Services</a>
+                <a href="../about/">About</a>
+                <a href="../contact/">Contact</a>
+                <a href="../ar/index.html" class="ctrl-btn">العربية</a>
+            </div>
+            <div class="controls">
+                <button class="ctrl-btn" id="themeToggle">☀️/🌙</button>
+                <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="hero" style="min-height:60vh;">
+            <div class="status-bar" id="statusBar"><span class="status-indicator" id="statusLight"></span><span id="statusText">Checking system status...</span></div>
+            <h1>⊛ Soil & Crop Suitability</h1>
+            <p class="cyan-text" style="max-width:600px;">What should you plant? Geology, climate, and soil analysis backed by 862 research papers and a machine‑learning recommender (F1=0.80).</p>
+        </section>
+        <section style="max-width:900px; margin:0 auto; padding:60px 20px;">
+            <div class="glass-card" style="padding:40px; margin-bottom:40px;">
+                <h2>How It Works</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--text-secondary);">
+                    <strong>1. Input:</strong> Your farm’s location and elevation (or we fetch it from our 1023‑point DEM).<br>
+                    <strong>2. Analysis:</strong> The engine overlays geology, soil type, rainfall, and temperature data, then runs a Random Forest model trained on 862 peer‑reviewed papers to rate suitability for crops like dates, sorghum, sesame.<br>
+                    <strong>3. Report:</strong> A crop suitability matrix with recommended species and expected yield class.
+                </p>
+            </div>
+            <div class="glass-card" style="padding:40px; margin-bottom:40px;">
+                <h2>Technical Specifications</h2>
+                <div class="section-divider"></div>
+                <ul style="color:var(--text-secondary); list-style:none;">
+                    <li>• 862 research papers indexed, F1 score 0.80</li>
+                    <li>• FAO Land Evaluation Framework applied</li>
+                    <li>• Regional geology & soil type database</li>
+                    <li>• <span class="gold-text">Real-time SoilGrids integration coming soon</span></li>
+                </ul>
+            </div>
+            <div class="glass-card" style="padding:40px; margin-bottom:40px;">
+                <h2>Sample Deliverables</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--text-secondary);">A PDF report containing a crop recommendation table, suitability maps, and the reasoning behind each rating.</p>
+            </div>
+            <div style="text-align:center;">
+                <a href="mailto:lattix1@outlook.com?subject=Soil & Crop Suitability Request" class="btn-cyan">Request Crop Analysis</a>
+                <p style="margin-top:16px; color:var(--text-secondary);">Response within 48 hours.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 LATTIX Intelligence Systems. All rights reserved.</p>
+        <p style="margin-top:8px;">Runs entirely on a phone. No cloud required.</p>
+    <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer> Methodology</a></p>
+<p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer>
+    <script src="../assets/js/three.min.js"></script>
+    <script src="../assets/js/satellite.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('lattix-theme', newTheme);
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+        async function checkStatus() {
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                document.getElementById('statusLight').className = 'status-indicator offline';
+                document.getElementById('statusText').textContent = 'Offline – Demo Mode';
+                return;
+            }
+            let ml = false, cal = false;
+            try { await fetch('http://localhost:8001/health', {mode:'no-cors'}); ml = true; } catch(e) {}
+            try { await fetch('http://localhost:8002/health', {mode:'no-cors'}); cal = true; } catch(e) {}
+            const light = document.getElementById('statusLight');
+            const text = document.getElementById('statusText');
+            if (ml || cal) {
+                light.className = 'status-indicator online';
+                text.textContent = 'System Online – Services Active';
+            } else {
+                light.className = 'status-indicator offline';
+                text.textContent = 'Offline – Demo Mode';
+            }
+        }
+        window.addEventListener('load', checkStatus);
+        setInterval(checkStatus, 60000);
+    </script>
+</body>
+</html>

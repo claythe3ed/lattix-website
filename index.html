@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LATTIX – Groundwater Intelligence for Sudan. Precision analysis, strategic insight. Built on a phone, ready for the field.">
+    <title>LATTIX | Groundwater Intelligence for Sudan</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">LATTIX <span>INTELLIGENCE SYSTEMS</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="#services">Services</a>
+                <a href="about/index.html">About</a>
+                <a href="contact/index.html">Contact</a>
+                <a href="ar/index.html" class="ctrl-btn">العربية</a>
+            </div>
+            <div class="controls">
+                <button class="ctrl-btn" id="themeToggle" title="Toggle light/dark mode">☀️/🌙</button>
+                <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="hero">
+            <div class="status-bar" id="statusBar">
+                <span class="status-indicator" id="statusLight"></span>
+                <span id="statusText">Checking system status...</span>
+            </div>
+            <h1>Groundwater Intelligence for Sudan</h1>
+            <p class="cyan-text">Precision Analysis, Strategic Insight.</p>
+            <p style="color:var(--text-secondary);">Built in Sudan. Running on a phone. Ready for the field.</p>
+            <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:20px;">
+                <a href="contact/index.html" class="btn-cyan">Start a Project</a>
+                <a href="tel:+249961658912" class="btn-gold">Call Now</a>
+            </div>
+        </section>
+        <section id="services" class="services-section">
+            <div style="text-align:center; margin-bottom:40px;">
+                <h2>Core Services</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--text-secondary); max-width:600px; margin:0 auto;">
+                    Powered by 22 aquifers, 97 VES points, 64 monitored boreholes, and a 5D strategic engine.
+                </p>
+            </div>
+            <div class="services-grid">
+                <a href="services/groundwater.html" class="glass-card service-card">
+                    <div class="service-icon">◆</div>
+                    <h3>Groundwater Drilling Advisory</h3>
+                    <p>Where to drill, how deep, expected yield, water quality. Backed by 22 Sudanese aquifers and 64 real boreholes.</p>
+                </a>
+                <a href="services/irrigation.html" class="glass-card service-card">
+                    <div class="service-icon">≣</div>
+                    <h3>Irrigation Planning</h3>
+                    <p>Can your land sustain the crop? Aquifer yield vs. crop water requirement using FAO coefficients.</p>
+                </a>
+                <a href="services/soil-crops.html" class="glass-card service-card">
+                    <div class="service-icon">⊛</div>
+                    <h3>Soil & Crop Suitability</h3>
+                    <p>Scientific land rating for dates, sorghum, sesame & more. Geology, climate, and soil analysis.</p>
+                </a>
+                <a href="services/strategy.html" class="glass-card service-card">
+                    <div class="service-icon">◈</div>
+                    <h3>Strategic Intelligence</h3>
+                    <p>5D conflict-commerce engine with 36 stratagems. Market intelligence from 489 harvested documents.</p>
+                </a>
+            </div>
+        </section>
+        <section style="max-width:800px; margin:0 auto; padding:40px 20px; text-align:center;">
+            <div class="glass-card" style="padding:40px;">
+                <h2>Why LATTIX?</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--text-secondary); max-width:600px; margin:20px auto 0;">
+                    Verified against IntechOpen peer‑reviewed hydrogeophysical data (2024). Our engine runs entirely on a mobile device – offline, secure, and sovereign. Built during conflict, without cloud reliance.
+                </p>
+            </div>
+        </section>
+        <section id="packages" style="max-width:1100px; margin:0 auto; padding:60px 20px;">
+            <div style="text-align:center; margin-bottom:40px;">
+                <h2>Service Packages</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--text-secondary);">Transparent pricing for farms, investors, and enterprises. All packages include secure data handling and technical consultation.</p>
+            </div>
+
+            <!-- Smart Farmer Packages -->
+            <div style="margin-top:40px;">
+                <h3 style="font-family:'Space Grotesk', monospace; font-size:1.5rem; margin-bottom:30px; display:flex; align-items:center; gap:12px;">
+                    <span style="color:var(--cyan);">◆</span> Smart Farmer Packages
+                    <span style="font-size:0.75rem; background:var(--card-bg); padding:4px 12px; border-radius:20px; color:var(--text-secondary);">Individual & Small Farms</span>
+                </h3>
+                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="glass-card" style="padding:30px;">
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px;">Digital Guidance Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$100 – $150</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Precise borehole location targeting using advanced spectral analysis, including technical probability report.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ GPS coordinate targeting</li>
+                            <li>✓ Water success probability</li>
+                            <li>✓ Digital report (PDF)</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Digital Guidance Pack" class="btn-cyan" style="display:block; text-align:center; padding:12px;">Request Quote</a>
+                    </div>
+                    <div class="glass-card" style="padding:30px; border:1px solid var(--gold); position:relative;">
+                        <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:#000; padding:4px 16px; border-radius:20px; font-size:0.7rem; font-weight:700; font-family:'Space Grotesk', monospace;">RECOMMENDED</div>
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px; margin-top:8px;">Integrated Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$200 – $300</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Site targeting plus crop suitability study to ensure best agricultural choice for local soil and climate.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ Everything in Digital Guidance</li>
+                            <li>✓ Crop suitability analysis</li>
+                            <li>✓ Soil composition report</li>
+                            <li>✓ Climate matching</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Integrated Pack" class="btn-gold" style="display:block; text-align:center; padding:12px; color:#000;">Request Quote</a>
+                    </div>
+                    <div class="glass-card" style="padding:30px;">
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px;">Premium Assurance Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$400 – $550</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Site targeting, preliminary well design, and full crop suitability study with technical specifications.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ Everything in Integrated</li>
+                            <li>✓ Preliminary well design</li>
+                            <li>✓ Drilling specifications</li>
+                            <li>✓ Phone consultation</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Premium Assurance Pack" class="btn-cyan" style="display:block; text-align:center; padding:12px;">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial Investor Packages -->
+            <div style="margin-top:60px;">
+                <h3 style="font-family:'Space Grotesk', monospace; font-size:1.5rem; margin-bottom:30px; display:flex; align-items:center; gap:12px;">
+                    <span style="color:var(--cyan);">≣</span> Commercial Investor Packages
+                    <span style="font-size:0.75rem; background:var(--card-bg); padding:4px 12px; border-radius:20px; color:var(--text-secondary);">Large Farms & Investors</span>
+                </h3>
+                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="glass-card" style="padding:30px;">
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px;">Engineering Precision Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$800 – $1,200</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Digital subsurface modeling and full borehole architectural design for peak production efficiency.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ Virtual VES simulation</li>
+                            <li>✓ Lithological strip design</li>
+                            <li>✓ Casing & screen specs</li>
+                            <li>✓ Technical drawings</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Engineering Precision Pack" class="btn-cyan" style="display:block; text-align:center; padding:12px;">Request Quote</a>
+                    </div>
+                    <div class="glass-card" style="padding:30px; border:1px solid var(--gold); position:relative;">
+                        <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:#000; padding:4px 16px; border-radius:20px; font-size:0.7rem; font-weight:700; font-family:'Space Grotesk', monospace;">RECOMMENDED</div>
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px; margin-top:8px;">Max Productivity Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$1,500 – $2,500</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Comprehensive solution linking well design with dynamic crop-water requirement matching.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ Everything in Engineering</li>
+                            <li>✓ Crop-water matching</li>
+                            <li>✓ Solar PV sizing</li>
+                            <li>✓ Pump selection</li>
+                            <li>✓ 2 revision cycles</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Max Productivity Pack" class="btn-gold" style="display:block; text-align:center; padding:12px; color:#000;">Request Quote</a>
+                    </div>
+                    <div class="glass-card" style="padding:30px;">
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px;">Technical Supervision Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$3,000 – $4,500</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Full design package plus technical support during initial implementation phases.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ Everything in Max Productivity</li>
+                            <li>✓ Drilling supervision</li>
+                            <li>✓ Installation oversight</li>
+                            <li>✓ 30-day support</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Technical Supervision Pack" class="btn-cyan" style="display:block; text-align:center; padding:12px;">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise Packages -->
+            <div style="margin-top:60px;">
+                <h3 style="font-family:'Space Grotesk', monospace; font-size:1.5rem; margin-bottom:30px; display:flex; align-items:center; gap:12px;">
+                    <span style="color:var(--gold);">◈</span> Enterprise & Institutional Packages
+                    <span style="font-size:0.75rem; background:var(--card-bg); padding:4px 12px; border-radius:20px; color:var(--text-secondary);">Organizations & Government</span>
+                </h3>
+                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="glass-card" style="padding:30px;">
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px;">Regional Survey Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$5,000 – $8,000</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Comprehensive geospatial aquifer analysis for large-scale areas, identifying strategic development points.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ Large-area coverage</li>
+                            <li>✓ Multiple site targeting</li>
+                            <li>✓ Strategic development map</li>
+                            <li>✓ Executive summary</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Regional Survey Pack" class="btn-cyan" style="display:block; text-align:center; padding:12px;">Request Quote</a>
+                    </div>
+                    <div class="glass-card" style="padding:30px; border:1px solid var(--gold);">
+                        <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px;">Sustainability & Monitoring Pack</div>
+                        <div class="gold-text" style="font-family:'Space Grotesk', monospace; font-size:1.8rem; font-weight:700; margin-bottom:16px;">$10,000 – $15,000</div>
+                        <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:20px;">Regional surveys with periodic satellite-based monitoring for water resources and vegetation health.</p>
+                        <ul style="list-style:none; color:var(--text-secondary); font-size:0.85rem; margin-bottom:24px;">
+                            <li>✓ Everything in Regional</li>
+                            <li>✓ Quarterly monitoring reports</li>
+                            <li>✓ Vegetation health tracking</li>
+                            <li>✓ Water table monitoring</li>
+                            <li>✓ Annual sustainability audit</li>
+                        </ul>
+                        <a href="mailto:lattix1@outlook.com?subject=Quote Request: Sustainability Pack" class="btn-gold" style="display:block; text-align:center; padding:12px; color:#000;">Request Quote</a>
+                    </div>
+                </div>
+                <div class="glass-card" style="padding:30px; margin-top:24px; border:1px solid var(--cyan);">
+                    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:20px;">
+                        <div>
+                            <div style="font-family:'Space Grotesk', monospace; font-weight:700; font-size:1.2rem; margin-bottom:8px;">Sovereign Integration Package</div>
+                            <p style="color:var(--text-secondary); font-size:0.9rem;">Full integration of all services with private dashboard for management and decision-making.</p>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:8px;">Custom Quote</div>
+                            <a href="mailto:lattix1@outlook.com?subject=Quote Request: Sovereign Integration Package" class="btn-cyan">Contact for Pricing</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about" style="max-width:800px; margin:0 auto; padding:60px 20px; text-align:center;">
+            <h2>Precision Engineering for Water Security</h2>
+            <div class="section-divider"></div>
+            <div class="glass-card" style="padding:40px; margin-top:30px;">
+                <p style="color:var(--text-secondary);">LATTIX combines satellite intelligence, geophysical simulation, and agricultural engineering to deliver end‑to‑end water solutions. From subsurface analysis to flowing irrigation, we ensure every drop counts.</p>
+                <div style="margin-top:24px; font-weight:700;">Muhammad Ali Said Mohamed Osman</div>
+                <div style="color:var(--cyan); font-size:0.9rem;">Founder & Lead Engineer</div>
+            </div>
+        </section>
+        <section id="contact" style="max-width:800px; margin:0 auto; padding:60px 20px;">
+            <h2 style="text-align:center;">Start Your Project</h2>
+            <div class="section-divider"></div>
+            <div class="glass-card" style="padding:32px; margin-top:30px;">
+                <p style="color:var(--text-secondary); margin-bottom:20px;">
+                    <strong>Email:</strong> <a href="mailto:lattix1@outlook.com" class="cyan-text">lattix1@outlook.com</a><br>
+<strong>Phone:</strong> <a href="tel:+249961658912" class="cyan-text">+(249) 96 165 8912</a> & <a href="tel:+249126177829" class="cyan-text">+(249) 12 617 7829</a>
+                </p>
+                <form onsubmit="event.preventDefault(); window.location.href='mailto:lattix1@outlook.com?subject=Project Inquiry&body=' + encodeURIComponent(document.getElementById('msg').value);">
+                    <textarea id="msg" rows="4" style="width:100%; background:var(--card-bg); border:1px solid var(--card-border); color:var(--text-primary); padding:12px; border-radius:8px;" placeholder="Describe your project..."></textarea>
+                    <button type="submit" class="btn-cyan" style="margin-top:12px;">Send Inquiry</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 LATTIX Intelligence Systems. All rights reserved.</p>
+        <p style="margin-top:8px;">Runs entirely on a phone. No cloud required.</p>
+        <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+    </footer>
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/satellite.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('lattix-theme', newTheme);
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+        async function checkStatus() {
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                document.getElementById('statusLight').className = 'status-indicator offline';
+                document.getElementById('statusText').textContent = 'Offline – Demo Mode';
+                return;
+            }
+            let ml = false, cal = false;
+            try { await fetch('http://localhost:8001/health', {mode:'no-cors'}); ml = true; } catch(e) {}
+            try { await fetch('http://localhost:8002/health', {mode:'no-cors'}); cal = true; } catch(e) {}
+            const light = document.getElementById('statusLight');
+            const text = document.getElementById('statusText');
+            if (ml || cal) {
+                light.className = 'status-indicator online';
+                text.textContent = 'System Online – Services Active';
+            } else {
+                light.className = 'status-indicator offline';
+                text.textContent = 'Offline – Demo Mode';
+            }
+        }
+        window.addEventListener('load', checkStatus);
+        setInterval(checkStatus, 60000);
+    </script>
+</body>
+</html>

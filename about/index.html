@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About LATTIX – Founder Muhammad Ali, sovereign technology, groundwater intelligence built on a phone.">
+    <title>About | LATTIX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">LATTIX <span>INTELLIGENCE SYSTEMS</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#services">Services</a>
+                <a href="../about/" class="active">About</a>
+                <a href="../contact/">Contact</a>
+                <a href="../ar/about/" class="ctrl-btn">العربية</a>
+            </div>
+            <div class="controls">
+                <button class="ctrl-btn" id="themeToggle">☀️/🌙</button>
+                <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="hero" style="min-height:60vh;">
+            <h1>About LATTIX</h1>
+            <p class="cyan-text" style="max-width:700px;">Precision Engineering for Water Security – built during conflict, without cloud reliance.</p>
+        </section>
+        <section style="max-width:800px; margin:0 auto; padding:40px 20px;">
+            <div class="glass-card" style="padding:40px; margin-bottom:40px;">
+                <h2>Our Mission</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--text-secondary);">We deliver sovereign groundwater intelligence to Sudanese farmers, investors, and agencies, using only a mobile phone. No data centres, no external dependence – just raw engineering and peer‑reviewed science.</p>
+            </div>
+            <div class="glass-card" style="padding:40px; margin-bottom:40px;">
+                <h2>Founder</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--text-secondary);"><strong>Muhammad Ali Said Mohamed Osman</strong> – Hydro‑geophysical analyst and systems architect. Built the entire LATTIX ecosystem (geospatial engine, ML pipeline, CTI module) on an Android phone using Termux. Committed to data sovereignty and water security.</p>
+            </div>
+            <div class="glass-card" style="padding:40px; margin-bottom:40px;">
+                <h2>Technology Stack</h2>
+                <div class="section-divider"></div>
+                <ul style="color:var(--text-secondary); list-style:none;">
+                    <li>• Python / FastAPI / scikit‑learn</li>
+                    <li>• QGIS & custom geospatial engine</li>
+                    <li>• Termux + Android Linux kernel</li>
+                    <li>• React + Three.js for dashboards</li>
+                    <li>• Local vector stores & NLP pipelines</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 LATTIX Intelligence Systems. All rights reserved.</p>
+        <p style="margin-top:8px;">Built in Sudan. Running on a phone. No cloud required.</p>
+    <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer> Methodology</a></p>
+<p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer>
+    <script src="../assets/js/three.min.js"></script>
+    <script src="../assets/js/satellite.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('lattix-theme', newTheme);
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+        async function checkStatus() {
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                document.getElementById('statusLight').className = 'status-indicator offline';
+                document.getElementById('statusText').textContent = 'Offline – Demo Mode';
+                return;
+            }
+            let ml = false, cal = false;
+            try { await fetch('http://localhost:8001/health', {mode:'no-cors'}); ml = true; } catch(e) {}
+            try { await fetch('http://localhost:8002/health', {mode:'no-cors'}); cal = true; } catch(e) {}
+            const light = document.getElementById('statusLight');
+            const text = document.getElementById('statusText');
+            if (ml || cal) {
+                light.className = 'status-indicator online';
+                text.textContent = 'System Online – Services Active';
+            } else {
+                light.className = 'status-indicator offline';
+                text.textContent = 'Offline – Demo Mode';
+            }
+        }
+        window.addEventListener('load', checkStatus);
+        setInterval(checkStatus, 60000);
+    </script>
+</body>
+</html>

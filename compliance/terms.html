@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | LATTIX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">LATTIX <span>INTELLIGENCE SYSTEMS</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#services">Services</a>
+                <a href="../about/">About</a>
+                <a href="../contact/">Contact</a>
+            </div>
+            <div class="controls">
+                <button class="ctrl-btn" id="themeToggle">☀️/🌙</button>
+                <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section style="max-width:800px; margin:120px auto 60px; padding:0 20px;">
+            <h1>Terms of Service</h1>
+            <div class="section-divider" style="margin:20px 0 40px 0;"></div>
+            <div class="glass-card" style="padding:40px;">
+                <p style="color:var(--text-secondary); margin-bottom:20px;"><strong>Last updated:</strong> 2026-06-30</p>
+                <p style="color:var(--text-secondary); margin-bottom:20px;">LATTIX provides groundwater intelligence, agricultural advisory, and strategic analysis services. All reports are scientific estimates based on peer‑reviewed data and models. Actual field results may vary due to local conditions beyond our control.</p>
+                <p style="color:var(--text-secondary); margin-bottom:20px;">We do not guarantee exact water presence, yield, or quality. Our reports are decision‑support tools and should be used alongside local expertise and regulatory compliance.</p>
+                <p style="color:var(--text-secondary); margin-bottom:20px;">Payment terms, turnaround times, and deliverable formats are agreed upon before work begins. All intellectual property generated during an engagement belongs to the client upon full payment.</p>
+                <p style="color:var(--text-secondary);">By using our services, you acknowledge these terms. For custom agreements, contact <a href="mailto:lattix1@outlook.com" class="cyan-text">lattix1@outlook.com</a>.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 LATTIX Intelligence Systems. All rights reserved.</p>
+        <p style="margin-top:8px;">Built in Sudan. Running on a phone. No cloud required.</p>
+    <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer> Methodology</a></p>
+<p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer>
+    <script src="../assets/js/three.min.js"></script>
+    <script src="../assets/js/satellite.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('lattix-theme', newTheme);
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+    </script>
+</body>
+</html>

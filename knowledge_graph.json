@@ -1,0 +1,46 @@
+{
+  "site": "LATTIX Intelligence Systems",
+  "version": "1.0",
+  "pages": {
+    "index": {
+      "file": "index.html",
+      "title": "Groundwater Intelligence for Sudan",
+      "status": "built"
+    },
+    "services/groundwater": {
+      "file": "services/groundwater.html",
+      "status": "built"
+    },
+    "services/irrigation": {
+      "file": "services/irrigation.html",
+      "status": "built"
+    },
+    "services/soil-crops": {
+      "file": "services/soil-crops.html",
+      "status": "built"
+    },
+    "services/strategy": {
+      "file": "services/strategy.html",
+      "status": "built"
+    },
+    "about": {
+      "file": "about/index.html",
+      "status": "built"
+    },
+    "contact": {
+      "file": "contact/index.html",
+      "status": "built"
+    },
+    "services/oil-gas": {
+      "file": "services/oil-gas.html",
+      "status": "hidden"
+    }
+  },
+  "global": {
+    "palette": "Deep Blue Tech + Gold",
+    "fonts": ["Space Grotesk", "Inter"],
+    "live_apis": ["localhost:8001/health", "localhost:8002/health"],
+    "founder": "Muhammad Ali Said Mohamed Osman",
+    "tagline": "Built in Sudan. Running on a phone. Ready for the field."
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | LATTIX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">LATTIX <span>INTELLIGENCE SYSTEMS</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#services">Services</a>
+                <a href="../about/">About</a>
+                <a href="../contact/">Contact</a>
+            </div>
+            <div class="controls">
+                <button class="ctrl-btn" id="themeToggle">☀️/🌙</button>
+                <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section style="max-width:800px; margin:120px auto 60px; padding:0 20px;">
+            <h1>Privacy Policy</h1>
+            <div class="section-divider" style="margin:20px 0 40px 0;"></div>
+            <div class="glass-card" style="padding:40px;">
+                <p style="color:var(--text-secondary); margin-bottom:20px;"><strong>Last updated:</strong> 2026-06-30</p>
+                <p style="color:var(--text-secondary); margin-bottom:20px;">LATTIX is a fully offline intelligence engine. We do <strong>not</strong> collect, store, or process any personal data on a server. All client data remains on the client's device during analysis, and any reports are delivered directly via email or phone.</p>
+                <p style="color:var(--text-secondary); margin-bottom:20px;">We do not use cookies, tracking scripts, analytics, or third‑party services. This website is static and served entirely from a local mobile device.</p>
+                <p style="color:var(--text-secondary); margin-bottom:20px;">If you contact us by email or WhatsApp, your contact information will be used solely for communication regarding your request and will not be shared with any third party.</p>
+                <p style="color:var(--text-secondary);">For any privacy questions, contact <a href="mailto:lattix1@outlook.com" class="cyan-text">lattix1@outlook.com</a>.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 LATTIX Intelligence Systems. All rights reserved.</p>
+        <p style="margin-top:8px;">Built in Sudan. Running on a phone. No cloud required.</p>
+    <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer> Methodology</a></p>
+<p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer>
+    <script src="../assets/js/three.min.js"></script>
+    <script src="../assets/js/satellite.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('lattix-theme', newTheme);
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+    </script>
+</body>
+</html>

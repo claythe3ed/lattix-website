@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Sources & Methodology | LATTIX</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">LATTIX <span>INTELLIGENCE SYSTEMS</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#services">Services</a>
+                <a href="../about/">About</a>
+                <a href="../contact/">Contact</a>
+            </div>
+            <div class="controls">
+                <button class="ctrl-btn" id="themeToggle">☀️/🌙</button>
+                <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section style="max-width:800px; margin:120px auto 60px; padding:0 20px;">
+            <h1>Data Sources & Methodology</h1>
+            <div class="section-divider" style="margin:20px 0 40px 0;"></div>
+            <div class="glass-card" style="padding:40px; margin-bottom:30px;">
+                <h2>Core Data</h2>
+                <div class="section-divider"></div>
+                <ul style="color:var(--text-secondary);">
+                    <li>• 22 Sudanese aquifers – digitised from geological surveys and literature</li>
+                    <li>• 97 Vertical Electrical Sounding points – IntechOpen 2024, <em>Hydrogeophysical Investigations for Groundwater Potentiality in Arid and Semiarid Zones</em></li>
+                    <li>• 64 boreholes with static water levels – collated from public and private records</li>
+                    <li>• 1023 elevation reference points – SRTM & field measurements</li>
+                </ul>
+            </div>
+            <div class="glass-card" style="padding:40px; margin-bottom:30px;">
+                <h2>Models & Frameworks</h2>
+                <div class="section-divider"></div>
+                <ul style="color:var(--text-secondary);">
+                    <li>• FAO Penman‑Monteith crop coefficients for irrigation planning</li>
+                    <li>• FAO Land Evaluation Framework for crop suitability</li>
+                    <li>• Random Forest classifier (F1=0.80) trained on 862 research papers</li>
+                    <li>• Virtual Electrical Sounding (VES) simulation for aquifer profiling</li>
+                </ul>
+            </div>
+            <div class="glass-card" style="padding:40px;">
+                <h2>Strategic Intelligence</h2>
+                <div class="section-divider"></div>
+                <ul style="color:var(--text-secondary);">
+                    <li>• 36 Stratagems engine (based on Sun Tzu's The Thirty‑Six Stratagems)</li>
+                    <li>• 489 harvested market & conflict documents</li>
+                    <li>• NLP‑driven threat scoring and opportunity mapping</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 LATTIX Intelligence Systems. All rights reserved.</p>
+        <p style="margin-top:8px;">Built in Sudan. Running on a phone. No cloud required.</p>
+    <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data <p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer> Methodology</a></p>
+<p style="margin-top:16px; font-size:0.85rem;"><a href="compliance/privacy.html" class="cyan-text">Privacy</a> · <a href="compliance/terms.html" class="cyan-text">Terms</a> · <a href="compliance/methodology.html" class="cyan-text">Data & Methodology</a></p>
+</footer>
+    <script src="../assets/js/three.min.js"></script>
+    <script src="../assets/js/satellite.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('lattix-theme', newTheme);
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+    </script>
+</body>
+</html>
