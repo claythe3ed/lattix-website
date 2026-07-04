@@ -1,159 +1,20 @@
-/* Deep Blue Tech + Gold – LATTIX Shared Styles */
-:root {
-    --deepest: #030812;
-    --navy: #020764;
-    --mid-blue: #043780;
-    --bright: #025EC4;
-    --cyan: #0ECCED;
-    --gold: #d4af37;
-    --text-primary: #e6f0ff;
-    --text-secondary: #8899bb;
-    --card-bg: rgba(2, 7, 100, 0.5);
-    --card-border: rgba(14, 204, 237, 0.2);
-    --glass-bg: rgba(3, 8, 18, 0.65);
-    --shadow: 0 8px 32px rgba(14, 204, 237, 0.08);
-    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-[data-theme="light"] {
-    --deepest: #eef2f6;
-    --navy: #d0dbe8;
-    --mid-blue: #a0bcd0;
-    --bright: #025EC4;
-    --cyan: #007799;
-    --text-primary: #030812;
-    --text-secondary: #334455;
-    --card-bg: rgba(255,255,255,0.7);
-    --card-border: rgba(0,100,150,0.2);
-    --glass-bg: rgba(255,255,255,0.8);
-    --shadow: 0 8px 24px rgba(0,80,120,0.1);
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--deepest);
-    color: var(--text-primary);
-    line-height: 1.6;
-    transition: background 0.4s, color 0.4s;
-    overflow-x: hidden;
-}
-h1, h2, h3, .mono, .logo {
-    font-family: 'Space Grotesk', 'Courier New', monospace;
-    font-weight: 700;
-}
-.cyan-text { color: var(--cyan); }
-.gold-text { color: var(--gold); }
-
-/* Glass card */
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-}
-.glass-card:hover {
-    border-color: var(--cyan);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(14,204,237,0.15);
-}
-
-/* Buttons */
-.btn-cyan, .btn-gold {
-    font-family: 'Space Grotesk', monospace;
-    font-weight: 700;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: var(--transition);
-}
-.btn-cyan {
-    background: linear-gradient(135deg, var(--bright), var(--cyan));
-    color: #fff;
-}
-.btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 0 24px rgba(14,204,237,0.5); }
-.btn-gold {
-    background: var(--gold);
-    color: #030812;
-}
-.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 24px rgba(212,175,55,0.5); }
-
-/* Navigation */
-.navbar {
-    position: fixed; top:0; width:100%; z-index: 1000;
-    background: rgba(3,8,18,0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--card-border);
-}
-.nav-container {
-    max-width: 1200px; margin:0 auto; padding:0 20px;
-    display:flex; justify-content:space-between; align-items:center; height:64px;
-}
-.logo {
-    font-size:1.8rem; color: var(--cyan); text-decoration:none;
-    display:flex; align-items:center; gap:8px;
-}
-.logo span { color: var(--text-primary); font-size:0.9rem; font-weight:500; }
-.nav-links { display:flex; gap:24px; align-items:center; }
-.nav-links a {
-    color: var(--text-secondary); text-decoration:none; font-weight:500;
-    transition: color 0.2s; font-size:0.95rem;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--cyan); }
-.hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-.hamburger span { width:25px; height:2px; background:var(--text-primary); transition:0.3s; }
-.controls { display:flex; gap:12px; align-items:center; }
-.ctrl-btn {
-    background:transparent; border:1px solid var(--card-border);
-    color:var(--text-primary); padding:6px 12px; border-radius:6px;
-    cursor:pointer; font-size:0.9rem; transition:var(--transition);
-    font-family:'Space Grotesk', monospace;
-}
-.ctrl-btn:hover { border-color:var(--cyan); }
-
-/* Canvas */
+/* ... (بداية الملف كما هي) ... */
+/* نضيف التعديلات التالية: */
 #three-canvas {
-    position: fixed; top:0; left:0; width:100%; height:100%;
-    z-index: 0; pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* في الخلف */
+    pointer-events: none;
 }
-main { position:relative; z-index:1; }
-
-/* Hero */
-.hero {
-    min-height: 100vh;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding: 0 20px;
+main {
+    position: relative;
+    z-index: 1; /* فوق القمر الصناعي */
 }
-.hero h1 { font-size:clamp(2rem, 6vw, 4rem); max-width:800px; margin-bottom:20px; line-height:1.1; }
-
-/* Status bar */
-.status-bar {
-    display:inline-flex; align-items:center; gap:12px;
-    background: var(--card-bg); border:1px solid var(--card-border);
-    border-radius:40px; padding:10px 24px; margin-bottom:32px; font-size:0.85rem;
-}
-.status-indicator { width:10px; height:10px; border-radius:50%; background:#ff4444; box-shadow:0 0 10px currentColor; }
-.status-indicator.online { background:#00ff88; box-shadow:0 0 12px #00ff88; }
-
-/* Sections */
-.section-divider { width:80px; height:3px; background:var(--cyan); margin:0 auto 20px; }
-
-footer {
-    border-top:1px solid var(--card-border); padding:24px; text-align:center;
-    color:var(--text-secondary); position:relative; z-index:1;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .nav-links {
-        position:fixed; top:64px; left:0; width:100%;
-        background:rgba(3,8,18,0.95); flex-direction:column;
-        padding:24px; gap:20px; transform:translateY(-120%);
-        transition:transform 0.3s ease;
-    }
-    .nav-links.active { transform:translateY(0); }
-    .hamburger { display:flex; }
+/* نجعل الكروت الزجاجية أكثر شفافية قليلاً لتظهر الخلفية */
+.glass-card {
+    background: rgba(3, 8, 18, 0.5); /* قللنا العتامة */
+    backdrop-filter: blur(8px); /* تقليل التمويه لرؤية أفضل للخلفية */
 }
