@@ -43,22 +43,29 @@ h1, h2, h3, .mono, .logo {
 .cyan-text { color: var(--cyan); }
 .gold-text { color: var(--gold); }
 
-/* Glass card */
+/* ---------- Glass card with micro-interactions ---------- */
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(8px);
     border: 1px solid var(--card-border);
     border-radius: 16px;
-    transition: var(--transition);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.35s;
     box-shadow: var(--shadow);
+    will-change: transform;
 }
 .glass-card:hover {
     border-color: var(--cyan);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(14,204,237,0.15);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(14,204,237,0.2),
+                0 0 30px rgba(14,204,237,0.08) inset;
+}
+.glass-card:active {
+    transform: translateY(-2px) scale(0.99);
 }
 
-/* Buttons */
+/* ---------- Buttons ---------- */
 .btn-cyan, .btn-gold {
     font-family: 'Space Grotesk', monospace;
     font-weight: 700;
@@ -68,25 +75,44 @@ h1, h2, h3, .mono, .logo {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    transition: var(--transition);
+    transition: transform 0.25s, box-shadow 0.25s, background 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 .btn-cyan {
     background: linear-gradient(135deg, var(--bright), var(--cyan));
     color: #fff;
 }
-.btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 0 24px rgba(14,204,237,0.5); }
+.btn-cyan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(14,204,237,0.4), 0 0 20px rgba(14,204,237,0.2);
+    background: linear-gradient(135deg, var(--cyan), var(--bright));
+}
+.btn-cyan:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(14,204,237,0.3);
+}
 .btn-gold {
     background: var(--gold);
     color: #030812;
 }
-.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 24px rgba(212,175,55,0.5); }
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(212,175,55,0.5), 0 0 20px rgba(212,175,55,0.2);
+    background: #e5c04f;
+}
+.btn-gold:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+}
 
-/* Navigation */
+/* ---------- Navigation ---------- */
 .navbar {
     position: fixed; top:0; width:100%; z-index: 1000;
     background: rgba(3,8,18,0.85);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--card-border);
+    transition: background 0.3s;
 }
 .nav-container {
     max-width: 1200px; margin:0 auto; padding:0 20px;
@@ -95,55 +121,122 @@ h1, h2, h3, .mono, .logo {
 .logo {
     font-size:1.8rem; color: var(--cyan); text-decoration:none;
     display:flex; align-items:center; gap:8px;
+    transition: color 0.2s, text-shadow 0.3s;
+}
+.logo:hover {
+    color: #4de6ff;
+    text-shadow: 0 0 10px rgba(14,204,237,0.6);
 }
 .logo span { color: var(--text-primary); font-size:0.9rem; font-weight:500; }
 .nav-links { display:flex; gap:24px; align-items:center; }
 .nav-links a {
     color: var(--text-secondary); text-decoration:none; font-weight:500;
-    transition: color 0.2s; font-size:0.95rem;
+    transition: color 0.2s, transform 0.2s;
+    position: relative;
+    padding-bottom: 4px;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--cyan);
+    transition: width 0.3s, left 0.3s;
+}
+.nav-links a:hover {
+    color: var(--cyan);
+}
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+}
+.nav-links a.active {
+    color: var(--cyan);
+}
 .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-.hamburger span { width:25px; height:2px; background:var(--text-primary); transition:0.3s; }
+.hamburger span {
+    width:25px; height:2px; background:var(--text-primary);
+    transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
 .controls { display:flex; gap:12px; align-items:center; }
 .ctrl-btn {
     background:transparent; border:1px solid var(--card-border);
     color:var(--text-primary); padding:6px 12px; border-radius:6px;
-    cursor:pointer; font-size:0.9rem; transition:var(--transition);
+    cursor:pointer; font-size:0.9rem; transition: background 0.3s, border-color 0.3s, color 0.3s;
     font-family:'Space Grotesk', monospace;
+    backdrop-filter: blur(4px);
 }
-.ctrl-btn:hover { border-color:var(--cyan); }
+.ctrl-btn:hover {
+    border-color: var(--cyan);
+    background: rgba(14,204,237,0.1);
+    color: var(--cyan);
+}
 
-/* Canvas */
+/* ---------- Canvas (Blueprint Satellite) ---------- */
 #three-canvas {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: 0;
     pointer-events: none;
 }
 main { position:relative; z-index:1; }
 
-/* Hero */
+/* ---------- Hero ---------- */
 .hero {
     min-height: 100vh;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center; padding: 0 20px;
 }
-.hero h1 { font-size:clamp(2rem, 6vw, 4rem); max-width:800px; margin-bottom:20px; line-height:1.1; }
+.hero h1 {
+    font-size:clamp(2rem, 6vw, 4rem);
+    max-width:800px; margin-bottom:20px; line-height:1.1;
+    animation: fadeInUp 0.8s ease both;
+}
+@keyframes fadeInUp {
+    from { opacity:0; transform: translateY(30px); }
+    to { opacity:1; transform: translateY(0); }
+}
 
-/* Status bar */
+/* ---------- Status bar ---------- */
 .status-bar {
     display:inline-flex; align-items:center; gap:12px;
     background: var(--card-bg); border:1px solid var(--card-border);
     border-radius:40px; padding:10px 24px; margin-bottom:32px; font-size:0.85rem;
+    backdrop-filter: blur(4px);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
-.status-indicator { width:10px; height:10px; border-radius:50%; background:#ff4444; box-shadow:0 0 10px currentColor; }
-.status-indicator.online { background:#00ff88; box-shadow:0 0 12px #00ff88; }
+.status-bar:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px rgba(14,204,237,0.2);
+}
+.status-indicator {
+    width:10px; height:10px; border-radius:50%;
+    background:#ff4444; box-shadow:0 0 10px currentColor;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+.status-indicator.online {
+    background:#00ff88; box-shadow:0 0 12px #00ff88;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow:0 0 10px #00ff88; }
+    50% { box-shadow:0 0 25px #00ff88; }
+    100% { box-shadow:0 0 10px #00ff88; }
+}
 
-/* Services Grid */
+/* ---------- Services Grid ---------- */
 .services-section { max-width:1100px; margin:0 auto; padding:60px 20px; }
 .services-grid {
     display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -152,45 +245,83 @@ main { position:relative; z-index:1; }
 .service-card {
     padding:32px 24px; text-decoration:none; color:inherit;
     display:block; height:100%;
+    transition: transform 0.35s, box-shadow 0.35s;
 }
-.service-icon { font-size:2rem; margin-bottom:16px; color:var(--cyan); }
-.service-card h3 { margin-bottom:12px; font-size:1.3rem; }
+.service-icon {
+    font-size:2rem; margin-bottom:16px; color:var(--cyan);
+    transition: transform 0.4s, color 0.3s;
+}
+.service-card:hover .service-icon {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--gold);
+}
+.service-card h3 {
+    margin-bottom:12px; font-size:1.3rem;
+    transition: color 0.3s;
+}
+.service-card:hover h3 {
+    color: var(--cyan);
+}
 .service-card p { color:var(--text-secondary); font-size:0.95rem; }
 
-/* Section Dividers */
-.section-divider { width:80px; height:3px; background:var(--cyan); margin:0 auto 20px; }
-
-footer {
-    border-top:1px solid var(--card-border); padding:24px; text-align:center;
-    color:var(--text-secondary); position:relative; z-index:1;
+/* ---------- Section Dividers ---------- */
+.section-divider {
+    width:80px; height:3px; background:var(--cyan);
+    margin:0 auto 20px;
+    transition: width 0.4s, background 0.3s;
+}
+.glass-card:hover .section-divider {
+    width: 120px;
+    background: var(--gold);
 }
 
-/* Responsive */
+/* ---------- Form elements ---------- */
+textarea {
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+textarea:focus {
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 15px rgba(14,204,237,0.2) !important;
+    outline: none;
+    background: rgba(0,0,0,0.3) !important;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    border-top:1px solid var(--card-border);
+    padding:24px; text-align:center;
+    color:var(--text-secondary);
+    position:relative; z-index:1;
+    font-size:0.9rem;
+}
+footer a {
+    transition: color 0.3s;
+}
+footer a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 8px rgba(14,204,237,0.5);
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 768px) {
     .nav-links {
         position:fixed; top:64px; left:0; width:100%;
         background:rgba(3,8,18,0.95); flex-direction:column;
         padding:24px; gap:20px; transform:translateY(-120%);
         transition:transform 0.3s ease;
+        backdrop-filter: blur(12px);
     }
     .nav-links.active { transform:translateY(0); }
     .hamburger { display:flex; }
 }
 
-/* روابط بطاقات الخدمات - منع التنسيق الافتراضي */
-.service-card,
-.service-card:link,
-.service-card:visited,
-.service-card:hover,
-.service-card:active {
-    color: inherit;
-    text-decoration: none;
+/* Additional micro-interactions for all links */
+a:not(.btn-cyan):not(.btn-gold):not(.service-card) {
+    transition: color 0.2s, text-shadow 0.3s;
 }
-.service-card h3 {
-    color: var(--cyan);
-    transition: color 0.2s;
+a:not(.btn-cyan):not(.btn-gold):not(.service-card):hover {
+    text-shadow: 0 0 8px var(--cyan);
 }
-.service-card:hover h3 {
-    color: var(--gold);
-}
-/* Updated 2026-07-04 v2 */
+
+/* Subtle parallax-like effect for hero section on mouse move (via JS not added here, but ready) */
