@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /compliance/
+Sitemap: https://claythe3ed.github.io/lattix-website/sitemap.xml
