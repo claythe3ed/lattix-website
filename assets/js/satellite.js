@@ -1,4 +1,4 @@
-// Blueprint Satellite + VES Layers + Scroll Disintegration (Fixed Wing)
+// Blueprint Satellite + Vertical Electrical Sounding (VES) Layers + Scroll Disintegration (Fixed Wing)
 (function() {
     const canvas = document.getElementById('three-canvas');
     if (!canvas) return;
@@ -87,8 +87,8 @@
         ctx.globalAlpha = 1;
     }
 
-    // طبقات VES (نفس السابق)
-    function drawVESLayers(disintegration) {
+    // طبقات Vertical Electrical Sounding (VES) (نفس السابق)
+    function drawVertical Electrical Sounding (VES)Layers(disintegration) {
         ctx.save();
         ctx.translate(canvas.width / 2, canvas.height / 2 + 50);
         const alpha = Math.max(0, 0.12 * (1 - disintegration * 0.8));
@@ -127,7 +127,7 @@
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawVESLayers(currentDisintegration);
+        drawVertical Electrical Sounding (VES)Layers(currentDisintegration);
         drawSatellite(currentDisintegration);
     }
     function animate() {
