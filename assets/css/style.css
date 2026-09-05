@@ -325,3 +325,18 @@ a:not(.btn-cyan):not(.btn-gold):not(.service-card):hover {
 }
 
 /* Subtle parallax-like effect for hero section on mouse move (via JS not added here, but ready) */
+
+/* Layer fix: canvas behind, content above */
+#three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+main, .navbar, footer {
+    position: relative;
+    z-index: 10;
+}
