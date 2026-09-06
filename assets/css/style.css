@@ -340,3 +340,102 @@ main, .navbar, footer {
     position: relative;
     z-index: 10;
 }
+
+/* ========== TOUCH TARGET FIX ========== */
+/* Ensure all interactive controls are at least 48x48px on mobile */
+button,
+.btn-cyan,
+.btn-gold,
+.nav-links a,
+.ctrl-btn,
+.hamburger,
+.service-card {
+  min-height: 48px;
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+/* Preserve inline layout for anchor buttons that are block-level */
+.btn-cyan,
+.btn-gold {
+  display: inline-block;
+  text-align: center;
+}
+
+/* ========== DYNAMIC VIEWPORT FIX ========== */
+/* Use dynamic viewport height for fullscreen sections and canvas */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#three-canvas {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* ========== RESPONSIVE GRID FIX ========== */
+/* Force single column on mobile for services and package grids */
+.services-grid {
+  grid-template-columns: 1fr; /* Mobile first */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========== DESIGN SYSTEM (Additional Tokens) ========== */
+/* Add new accent tokens without overriding existing Deep Blue Tech palette */
+:root {
+  --accent-cyan: #0ECCED;
+  --accent-cyan-glow: rgba(14, 204, 237, 0.25);
+  --accent-emerald: #00ff88;
+  --accent-emerald-glow: rgba(0, 255, 136, 0.25);
+  --text-main: #e6f0ff;
+  --text-muted: #8899bb;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Grotesk', 'Courier New', monospace;
+}
+
+/* ========== GPU HARDWARE ACCELERATION ========== */
+/* Promote heavy visual elements to their own GPU layers */
+#three-canvas,
+.glass-card,
+.service-card,
+.package-card {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ========== MOTION ACCESSIBILITY ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  #three-canvas,
+  .glass-card,
+  .service-card {
+    will-change: auto;
+  }
+}
