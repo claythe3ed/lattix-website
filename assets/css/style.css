@@ -442,5 +442,5 @@ button,
 
 /* Open universe background behind the WebGL canvas */
 #three-canvas {
-    background: linear-gradient(rgba(10, 13, 18, 0.65), rgba(10, 13, 18, 0.65)), url('assets/images/space_background.jpg') center / cover no-repeat;
+    background: linear-gradient(rgba(10, 13, 18, 0.65), rgba(10, 13, 18, 0.65)), url('/lattix-website/assets/images/space_background.jpg') center / cover no-repeat;
 }
