@@ -439,3 +439,8 @@ button,
     will-change: auto;
   }
 }
+
+/* Open universe background behind the WebGL canvas */
+#three-canvas {
+    background: linear-gradient(rgba(10, 13, 18, 0.65), rgba(10, 13, 18, 0.65)), url('assets/images/space_background.jpg') center / cover no-repeat;
+}
