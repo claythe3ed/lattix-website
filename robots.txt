@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /compliance/
+Disallow: /assets/
 Sitemap: https://claythe3ed.github.io/lattix-website/sitemap.xml
